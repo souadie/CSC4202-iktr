@@ -1,19 +1,48 @@
-# Algorithm Analysis: Extended Graph Coloring Algorithm
+### Algorithm Analysis
 
-## Time Complexity
-The time complexity of the extended graph coloring algorithm can be quite high, potentially O((V*R*I)^V), where V is the number of vertices (exams), R is the number of rooms, and I is the number of instructors. This is due to the nested loops checking time slots, rooms, and instructors for each exam.
+#### Time Complexity
 
-## Space Complexity
-The space complexity is O(V + E + R + I), where V is the number of vertices (exams), E is the number of edges (conflicts), R is the number of rooms, and I is the number of instructors. This includes space for storing the graph, the room, and instructor availability, and the schedule.
+The time complexity of the algorithm can be analyzed based on the recursive backtracking approach used to assign time slots, rooms, and instructors.
 
-## Performance
-- *Best Case:* The algorithm performs well when there are enough rooms and instructors to easily meet all constraints.
-- *Worst Case:* The algorithm struggles with limited resources (rooms and instructors) and high conflicts, leading to increased backtracking and computation time.
+- Let E be the number of exams.
+- Let R be the number of rooms.
+- Let I be the number of instructors.
 
-## Output Description
-The output of the algorithm is a valid scheduling of the exams if a solution exists. Each exam is assigned a tuple (time_slot, room, instructor). For example, if the output is [(0, 101, 1), (1, 102, 2), (0, 101, 1), (1, 102, 2)], it means:
-- Exam 0 and Exam 2 are scheduled in time slot 0 in room 101 with instructor 1.
-- Exam 1 and Exam 3 are scheduled in time slot 1 in room 102 with instructor 2.
+In the worst case, the algorithm might need to check all possible combinations of time slots, rooms, and instructors for each exam.
 
-## Conclusion
-The extended graph coloring algorithm is effective for solving the exam scheduling problem by modeling conflicts and assigning time slots, rooms, and instructors efficiently, although it may face performance challenges with high resource constraints.
+*Worst-Case Time Complexity*:
+- For each exam, there are E possible time slots.
+- For each time slot, there are R possible rooms.
+- For each room, there are I possible instructors.
+
+Thus, the total number of combinations the algorithm might need to check is:
+\[ O((E \times R \times I)^E) \]
+
+*Best-Case Time Complexity*:
+- In the best case, the first combination tried for each exam is valid, so the algorithm makes no backtracking steps.
+- Thus, the best-case time complexity is simply the number of exams times the number of combinations checked for each exam:
+\[ O(E \times R \times I) \]
+
+*Average-Case Time Complexity*:
+- The average-case time complexity is more challenging to determine as it depends on the specific structure of the conflict matrix and the distribution of room and instructor availability.
+- It typically lies between the best-case and worst-case complexities but closer to the worst-case for dense conflict matrices and limited resources.
+
+#### Space Complexity
+
+The space complexity of the algorithm is determined by the storage required for:
+- The conflict matrix: \( O(E^2) \)
+- The room and instructor lists: \( O(R + I) \)
+- The schedule array: \( O(E) \)
+
+*Total Space Complexity*:
+\[ O(E^2 + R + I + E) = O(E^2 + R + I) \]
+
+### Summary
+
+- *Correctness*: The algorithm is correct as it ensures that no constraints are violated and explores all possible combinations through backtracking.
+- *Worst-Case Time Complexity*: \( O((E \times R \times I)^E) \)
+- *Best-Case Time Complexity*: \( O(E \times R \times I) \)
+- *Average-Case Time Complexity*: Between the best and worst case, closer to the worst case for dense conflict matrices.
+- *Space Complexity*: \( O(E^2 + R + I) \)
+
+The algorithm effectively handles complex scheduling problems by ensuring all constraints are met, but its performance can degrade significantly with an increasing number of exams, rooms, and instructors, especially in dense conflict scenarios.
