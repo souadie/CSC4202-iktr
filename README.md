@@ -19,7 +19,7 @@ The university needs to organize the final exam schedule for all its courses at 
 - **Objective**:
   - Create an exam timetable that minimizes conflicts and meets all constraints.
 
-**Importance of the Problem**:
+**why finding a solution for this scenario is important**:
 
  - Resource Utilization: Efficient use of rooms and instructors, avoiding underuse or overuse of resources.
  - Logistical Efficiency: Streamlined operations for the university's administrative staff.
