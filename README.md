@@ -1,7 +1,6 @@
 # CSC4202-iktr
 # University Exam Scheduling Project
 ## Problem Description
-#iktr was here
 **Introduction**: 
 The university needs to organize the final exam schedule for all its courses at the end of the semester. This task involves assigning specific time slots and rooms for each exam while considering various constraints such as room availability, instructor schedules, and student enrollments.
 
