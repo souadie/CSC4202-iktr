@@ -21,6 +21,6 @@ The university needs to organize the final exam schedule for all its courses at 
 
 **Importance of the Problem**:
 
- -Resource Utilization: Efficient use of rooms and instructors, avoiding underuse or overuse of resources.
- -Logistical Efficiency: Streamlined operations for the university's administrative staff.
- -Fairness: Equitable scheduling for all students and instructors, avoiding biases and scheduling conflicts.
+ - Resource Utilization: Efficient use of rooms and instructors, avoiding underuse or overuse of resources.
+ - Logistical Efficiency: Streamlined operations for the university's administrative staff.
+ - Fairness: Equitable scheduling for all students and instructors, avoiding biases and scheduling conflicts.
