@@ -1,7 +1,7 @@
 # Algorithm Paradigm
 
 ## Algorithm Selection
-To solve the exam scheduling problem, we have chosen graph algorithms due to their ability to model complex constraints and relationships effectively. We will use graph coloring to ensure no two exams with common students are scheduled at the same time.
+To solve the exam scheduling problem, we have chosen an extended graph algorithm approach due to its ability to model complex constraints and relationships effectively. We will use a modified graph coloring algorithm combined with constraint satisfaction techniques to ensure all constraints are met.
 
 
 ## Pseudocode
