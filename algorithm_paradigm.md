@@ -1,7 +1,8 @@
 # Algorithm Paradigm
 
 ## Algorithm Selection
-We chose the Constraint Satisfaction Problem (CSP) approach because it is systematic and flexible, capable of handling complex constraints effectively.
+To solve the exam scheduling problem, we have chosen graph algorithms due to their ability to model complex constraints and relationships effectively. We will use graph coloring to ensure no two exams with common students are scheduled at the same time.
+
 
 ## Pseudocode
 ```python
