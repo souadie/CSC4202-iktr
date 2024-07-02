@@ -71,25 +71,26 @@ else:
 ```
 
 # Output
+
 Given the example inputs:
 
-3 exams (A, B, C) with conflicts:
+1) 3 exams (A, B, C) with conflicts:
 
-Exam A conflicts with Exam B.
+   -Exam A conflicts with Exam B.
 
-Exam B conflicts with Exams A and C.
+   -Exam B conflicts with Exams A and C.
 
-Exam C conflicts with Exam B.
+   -Exam C conflicts with Exam B.
 
-2 rooms (101, 102).
+2) 2 rooms (101, 102).
 
-2 instructors (1, 2).
+3) 2 instructors (1, 2).
 
 The algorithm will produce a valid schedule that adheres to all constraints.
 
 Here’s a possible output:
 
-Exam Schedule:  [(0, 101, 1), (1, 102, 2), (2, 101, 1)]
+## Exam Schedule:  [(0, 101, 1), (1, 102, 2), (2, 101, 1)]
 
 
 This output means:
