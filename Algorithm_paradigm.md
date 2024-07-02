@@ -113,39 +113,50 @@ else:
 
 # Output
 
-Given the example inputs:
+Initial Data:
+- Number of exams: 4
+- Conflict Matrix:
+  
+  [0, 1, 0, 1],  # Exam 0 conflicts with Exam 1 and Exam 3
+  
+  [1, 0, 1, 0],  # Exam 1 conflicts with Exam 0 and Exam 2
+  
+  [0, 1, 0, 1],  # Exam 2 conflicts with Exam 1 and Exam 3
+  
+  [1, 0, 1, 0]   # Exam 3 conflicts with Exam 0 and Exam 2
 
-1) 3 exams (A, B, C) with conflicts:
+- Rooms: [101, 102]
+- Instructors: [1, 2]
+- Specific Requirements: {0: 101} (Exam 0 requires Room 101)
 
-   -Exam A conflicts with Exam B.
+## Walkthrough of the Code Execution:
+1. Graph Coloring:
+    - Start with Exam 0 and try colors 0, 1, 2, 3 (max 4 colors but will use 2 as it's a bipartite graph).
 
-   -Exam B conflicts with Exams A and C.
+2. Color Assignments:
+    - Exam 0 → Color 0 (time slot 0)
+    - Exam 1 → Color 1 (time slot 1) (as it conflicts with Exam 0)
+    - Exam 2 → Color 0 (time slot 0) (as it conflicts with Exam 1)
+    - Exam 3 → Color 1 (time slot 1) (as it conflicts with Exam 0)
+    - 
+The coloring is successful, resulting in the schedule: [0, 1, 0, 1].
 
-   -Exam C conflicts with Exam B.
+3. Assign Rooms and Instructors:
+    - Exam 0 (time slot 0):
+         - Room: 101 (specific requirement)
+         - Instructor: 1 or 2
+    - Exam 1 (time slot 1):
+         - Room: 101 or 102
+         - Instructor: 1 or 2
+    - Exam 2 (time slot 0):
+         - Room: 102 (only remaining room at time slot 0 since 101 is taken by Exam 0)
+         - Instructor: 1 or 2
+    - Exam 3 (time slot 1):
+         - Room: whichever room is not taken by Exam 1 at time slot 1
+         - Instructor: whichever instructor is not taken by Exam 1 at time slot 1
 
-2) 2 rooms (101, 102).
-
-3) 2 instructors (1, 2).
-
-The algorithm will produce a valid schedule that adheres to all constraints.
-
-Here’s a possible output:
-
-## Exam Schedule:  [(0, 101, 1), (1, 102, 2), (2, 101, 1)]
-
-
-This output means:
-
-Exam A is scheduled at time slot 0, in room 101, with instructor 1.
-
-Exam B is scheduled at time slot 1, in room 102, with instructor 2.
-
-Exam C is scheduled at time slot 2, in room 101, with instructor 1.
-
-The schedule ensures that:
-
-No two exams are in the same room at the same time.
-
-No instructor is assigned to more than one exam at a time.
-
-No student has overlapping exams (as per the conflict matrix).
+## Final Schedule:
+- Exam 0: (time slot 0, room 101, instructor 1)
+- Exam 1: (time slot 1, room 102, instructor 2)
+- Exam 2: (time slot 0, room 102, instructor 2)
+- Exam 3: (time slot 1, room 101, instructor 1)
