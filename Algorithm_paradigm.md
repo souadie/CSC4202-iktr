@@ -21,17 +21,15 @@ class ExamScheduler:
         self.rooms = rooms
         self.instructors = instructors
         self.specific_requirements = specific_requirements
-        self.schedule = [-1] * num_exams
+        self.schedule = [(-1, -1, -1)] * num_exams  # (time_slot, room, instructor)
 
     def is_safe(self, exam, time_slot, room, instructor):
         for i in range(self.num_exams):
             if self.conflicts[exam][i]:
-                # Check if time slot or room conflicts
-                if self.schedule[i][0] == time_slot or self.schedule[i][1] == room:
+                if self.schedule[i][0] == time_slot or self.schedule[i][1] == room or self.schedule[i][2] == instructor:
                     return False
-                # Check instructor availability
-                if self.schedule[i][2] == instructor:
-                    return False
+        if exam in self.specific_requirements and self.specific_requirements[exam] != room:
+            return False
         return True
 
     def schedule_exams(self):
@@ -47,9 +45,26 @@ class ExamScheduler:
             for room in self.rooms:
                 for instructor in self.instructors:
                     if self.is_safe(exam, time_slot, room, instructor):
-                        # Assign time slot, room, and instructor to the exam
                         self.schedule[exam] = (time_slot, room, instructor)
                         if self.assign_schedule(exam + 1):
                             return True
-                        self.schedule[exam] = -1
+                        self.schedule[exam] = (-1, -1, -1)  # Backtrack
         return False
+
+# Example execution
+num_exams = 3
+conflicts = [
+    [0, 1, 0],
+    [1, 0, 1],
+    [0, 1, 0]
+]
+rooms = [101, 102]
+instructors = [1, 2]
+specific_requirements = {0: 101}
+
+scheduler = ExamScheduler(num_exams, conflicts, rooms, instructors, specific_requirements)
+schedule = scheduler.schedule_exams()
+if schedule:
+    print("Exam Schedule: ", schedule)
+else:
+    print("No valid schedule found.")
