@@ -68,6 +68,7 @@ if schedule:
     print("Exam Schedule: ", schedule)
 else:
     print("No valid schedule found.")
+```
 
 # Output
 Given the example inputs:
